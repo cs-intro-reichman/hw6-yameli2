@@ -85,26 +85,42 @@ public class Runigram {
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		//// Replace the following statement with your code
 		
-		return null;
-	}
+	Color[][] flippedImageH = new Color[image.length][image[0].length];
+	int indexCol=0;
+	for (int row=0;row<image.length;row++){
+	   for(int col=image[row].length-1;col>=0;col--){
+		   flippedImageH[row][indexCol]=image[row][col];
+		   indexCol++;
+		   
+	   }
+   }
+   
+   return flippedImageH;
+}
+		
+		
 	
 	/**
 	 * Returns an image which is the vertically flipped version of the given image. 
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
 		//// Replace the following statement with your code
-		 Color[][] flippedImage = new Color[image.length][image[0].length];
-		 int indexRow=0;
-		 for (int row=image.length-1;row>=0;row--){
-			for(int col=0;col<image[row].length;col++){
-				flippedImage[indexRow][col]=image[row][col];
-				
-			}
-			indexRow++;
-		}
+		Color[][] flippedImageV = new Color[image.length][image[0].length];
+		int indexRow=0;
+		for (int row=image.length-1;row>=0;row--){
+		   for(int col=0;col<image[row].length;col++){
+			   flippedImageV[indexRow][col]=image[row][col];
+			   
+		   }
+		   indexRow++;
+	   }
+	   
+	   return flippedImageV;
+   }
 		
-		return flippedImage;
-	}
+		
+		
+		
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
@@ -125,8 +141,17 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		//// Replace the following statement with your code
+		Color[][] grayColored = new Color[image.length][image[0].length];
+		 for (int row=0;row<image.length;row++){
+			for(int col=0;col<image[row].length;col++){
+				Color turnGray=new Color(image[row][col].getRed(), image[row][col].getBlue(),image[row][col].getGreen());
+				 turnGray=luminance(turnGray);
+				 grayColored[row][col]=turnGray;
+
+			}
+			}
 		
-		return null;
+		return grayColored;
 	}	
 	
 	/**
