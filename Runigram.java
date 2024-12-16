@@ -22,12 +22,15 @@ public class Runigram {
 		
 		//// Write here whatever code you need in order to test your work.
 		//// You can continue using the image array.
+		System.out.print("image = "); print(image);
+		System.out.println();
+
 	}
 
 	/** Returns a 2D array of Color values, representing the image data
 	 * stored in the given PPM file. */
-	public static Color[][] read(String fileName) {
-		In in = new In(fileName);
+	public static Color[][] read(String cake) {
+		In in = new In(cake);
 		// Reads the file header, ignoring the first and the third lines.
 		in.readString();
 		int numCols = in.readInt();
@@ -40,6 +43,15 @@ public class Runigram {
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
+		for (int row=0;row<numRows;row++){
+			for(int col=0;col<numCols;col++){
+				int r=in.readInt();
+				int b=in.readInt();
+				int g=in.readInt();
+				Color c=new Color(r, g, b);
+				image[row][col]=c;
+			}
+		}
 		return null;
 	}
 
@@ -60,6 +72,11 @@ public class Runigram {
 	private static void print(Color[][] image) {
 		//// Replace this comment with your code
 		//// Notice that all you have to so is print every element (i,j) of the array using the print(Color) function.
+		for (int row=0;row<image.length;row++){
+			for(int col=0;col<image[row].length;col++){
+				System.out.println("("+image[row][col].getRed()+ image[row][col].getBlue()+image[row][col].getGreen()+")");
+	}
+}
 	}
 	
 	/**
@@ -67,6 +84,7 @@ public class Runigram {
 	 */
 	public static Color[][] flippedHorizontally(Color[][] image) {
 		//// Replace the following statement with your code
+		
 		return null;
 	}
 	
@@ -75,7 +93,17 @@ public class Runigram {
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
 		//// Replace the following statement with your code
-		return null;
+		 Color[][] flippedImage = new Color[image.length][image[0].length];
+		 int indexRow=0;
+		 for (int row=image.length-1;row>=0;row--){
+			for(int col=0;col<image[row].length;col++){
+				flippedImage[indexRow][col]=image[row][col];
+				
+			}
+			indexRow++;
+		}
+		
+		return flippedImage;
 	}
 	
 	// Computes the luminance of the RGB values of the given pixel, using the formula 
@@ -83,7 +111,13 @@ public class Runigram {
 	// the three values r = lum, g = lum, b = lum.
 	private static Color luminance(Color pixel) {
 		//// Replace the following statement with your code
-		return null;
+		int r=pixel.getRed();
+		int b=pixel.getBlue();
+		int g= pixel.getGreen();
+		int lum=(int)(0.299*r+0.587*g+0.114*b);
+		Color lumColor=new Color(lum,lum,lum);
+
+		return lumColor;
 	}
 	
 	/**
@@ -91,6 +125,7 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		//// Replace the following statement with your code
+		
 		return null;
 	}	
 	
