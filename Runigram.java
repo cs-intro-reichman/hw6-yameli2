@@ -105,6 +105,9 @@ public class Runigram {
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
 		//// Replace the following statement with your code
+		if(image.length==0){
+			return null;
+		}
 		Color[][] flippedImageV = new Color[image.length][image[0].length];
 		int indexRow=0;
 		for (int row=image.length-1;row>=0;row--){
@@ -141,6 +144,9 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		//// Replace the following statement with your code
+		if(image.length==0){
+			return null;
+		}
 		Color[][] grayColored = new Color[image.length][image[0].length];
 		 for (int row=0;row<image.length;row++){
 			for(int col=0;col<image[row].length;col++){
@@ -160,6 +166,9 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
+		if(image.length==0){
+			return null;
+		}
 		Color[][] scaledImage = new Color[height][width];
 		//int indexRow=0;
 		int rangeScaledRow=(int)(image.length/height);
@@ -204,7 +213,17 @@ public class Runigram {
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
 		//// Replace the following statement with your code
-		return null;
+		if(image1.length!=image2.length||image1[0].length!=image2[0].length){
+			return null;
+		}
+		Color[][] blendedImage = new Color[image1.length][image1[0].length];
+		for (int row=0;row<image1.length;row++){
+			for(int col=0;col<image1[row].length;col++){
+				blendedImage[row][col]=blend(image1[row][col],image2[row][col],alpha);
+			}
+		}
+		
+		return blendedImage;
 	}
 
 	/**
@@ -215,6 +234,24 @@ public class Runigram {
 	 */
 	public static void morph(Color[][] source, Color[][] target, int n) {
 		//// Replace this comment with your code
+		if(source.length==0||target.length==0){
+			System.out.print("not valid input");
+		}
+		double alpha=n;
+		Color[][] morphedImage=new Color[source.length][source[0].length];
+		target=scaled(target, source[0].length,source.length);
+		
+		while(alpha!=0){
+			
+			for (int row=0;row<morphedImage.length;row++){
+			for(int col=0;col<morphedImage[row].length;col++){
+				morphedImage[row][col]=blend(source[row][col],target[row][col],alpha);
+				print(morphedImage[row][col]);
+			}
+		}
+		for(int i=0;i<n;i++)
+		alpha=(double)((n-i)/n);
+		}
 	}
 	
 	/** Creates a canvas for the given image. */
