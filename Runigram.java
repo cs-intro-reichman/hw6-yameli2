@@ -237,20 +237,17 @@ public class Runigram {
 		if(source.length==0||target.length==0){
 			System.out.print("not valid input");
 		}
-		double alpha=n;
 		Color[][] morphedImage=new Color[source.length][source[0].length];
 		target=scaled(target, source[0].length,source.length);
-		
-		while(alpha!=0){
-			
+		for(int i=0;i<=n;i++){
+			double alpha=(double)((n-i)/n);
 			for (int row=0;row<morphedImage.length;row++){
 			for(int col=0;col<morphedImage[row].length;col++){
 				morphedImage[row][col]=blend(source[row][col],target[row][col],alpha);
-				print(morphedImage[row][col]);
 			}
 		}
-		for(int i=0;i<n;i++)
-		alpha=(double)((n-i)/n);
+		Runigram.display(morphedImage);
+		StdDraw.pause(500);
 		}
 	}
 	
