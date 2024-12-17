@@ -86,8 +86,8 @@ public class Runigram {
 		//// Replace the following statement with your code
 		
 	Color[][] flippedImageH = new Color[image.length][image[0].length];
-	int indexCol=0;
 	for (int row=0;row<image.length;row++){
+		int indexCol=0;
 	   for(int col=image[row].length-1;col>=0;col--){
 		   flippedImageH[row][indexCol]=image[row][col];
 		   indexCol++;
@@ -160,7 +160,19 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
-		return null;
+		Color[][] scaledImage = new Color[height][width];
+		//int indexRow=0;
+		int rangeScaledRow=(int)(image.length/height);
+		int rangeScaledCol=(int)(image[0].length/width);
+		for (int row=0;row<height;row++){
+			//int indexCol=0;
+			for(int col=0;col<width;col++){
+				scaledImage[row][col]=image[row*rangeScaledRow][col*rangeScaledCol];
+
+			}
+		}
+		
+		return scaledImage;
 	}
 	
 	/**
@@ -171,7 +183,17 @@ public class Runigram {
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
 		//// Replace the following statement with your code
+		Color newColor=new Color(((int)(alpha*(c1.getRed())+(1-alpha)*(c2.getRed()))),((int)(alpha*(c1.getBlue())+(1-alpha)*(c2.getBlue()))),((int)(alpha*(c1.getGreen())+(1-alpha)*(c2.getGreen()))));
+		if(!(newColor.getRed()>=0&&newColor.getRed()<=255)){
 		return null;
+		}
+		if(!(newColor.getBlue()>=0&&newColor.getBlue()<=255)){
+		return null;
+		}
+		if(!(newColor.getGreen()>=0&&newColor.getGreen()<=255)){
+		return null;
+		}
+		return newColor;
 	}
 	
 	/**
