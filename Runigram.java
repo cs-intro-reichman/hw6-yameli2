@@ -72,9 +72,10 @@ public class Runigram {
 	private static void print(Color[][] image) {
 		//// Replace this comment with your code
 		//// Notice that all you have to so is print every element (i,j) of the array using the print(Color) function.
-		for (int row=0;row<image.length;row++){
-			for(int col=0;col<image[row].length;col++){
-				System.out.println("("+image[row][col].getRed()+ image[row][col].getBlue()+image[row][col].getGreen()+")");
+		
+			for(int col=0;col<image[0].length;col++){
+				for (int row=0;row<image.length;row++){
+				System.out.println("("+image[row][col].getRed()+", "+ image[row][col].getBlue()+", "+image[row][col].getGreen()+")");
 	}
 }
 	}
@@ -105,9 +106,6 @@ public class Runigram {
 	 */
 	public static Color[][] flippedVertically(Color[][] image){
 		//// Replace the following statement with your code
-		if(image.length==0){
-			return null;
-		}
 		Color[][] flippedImageV = new Color[image.length][image[0].length];
 		int indexRow=0;
 		for (int row=image[0].length-1;row>=0;row--){
@@ -188,17 +186,25 @@ public class Runigram {
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
 		//// Replace the following statement with your code
-		Color newColor=new Color(((int)(alpha*(c1.getRed())+(1-alpha)*(c2.getRed()))),((int)(alpha*(c1.getBlue())+(1-alpha)*(c2.getBlue()))),((int)(alpha*(c1.getGreen())+(1-alpha)*(c2.getGreen()))));
-		if(!(newColor.getRed()>=0&&newColor.getRed()<=255)){
-		return null;
-		}
-		if(!(newColor.getBlue()>=0&&newColor.getBlue()<=255)){
-		return null;
-		}
-		if(!(newColor.getGreen()>=0&&newColor.getGreen()<=255)){
-		return null;
-		}
-		return newColor;
+		int r = (int)(alpha * c1.getRed() + (1 - alpha) * c2.getRed());
+		int g = (int)(alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
+		int b = (int)(alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
+
+		//r = Math.max(0, Math.min(255, r));
+		//g = Math.max(0, Math.min(255, g));
+		//b = Math.max(0, Math.min(255, b));
+		return new Color(r, g, b);
+		//Color newColor=new Color(((int)(alpha*(c1.getRed())+(1-alpha)*(c2.getRed()))),((int)(alpha*(c1.getBlue())+(1-alpha)*(c2.getBlue()))),((int)(alpha*(c1.getGreen())+(1-alpha)*(c2.getGreen()))));
+		//if(!(newColor.getRed()>=0&&newColor.getRed()<=255)){
+		//return null;
+		//}
+		//if(!(newColor.getBlue()>=0&&newColor.getBlue()<=255)){
+		//return null;
+		//}
+		//if(!(newColor.getGreen()>=0&&newColor.getGreen()<=255)){
+		//return null;
+		//}
+		//return newColor;
 	}
 	
 	/**
