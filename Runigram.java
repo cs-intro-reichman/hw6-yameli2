@@ -73,11 +73,13 @@ public class Runigram {
 		//// Replace this comment with your code
 		//// Notice that all you have to so is print every element (i,j) of the array using the print(Color) function.
 		
-			for(int col=0;col<image[0].length;col++){
+			
 				for (int row=0;row<image.length;row++){
-				System.out.println("("+image[row][col].getRed()+", "+ image[row][col].getBlue()+", "+image[row][col].getGreen()+")");
-	}
-}
+					for(int col=0;col<image[row].length;col++){
+					print(image[row][col]);
+					}
+	             System.out.println();
+                }
 	}
 	
 	/**
