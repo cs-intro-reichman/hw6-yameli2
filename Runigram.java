@@ -29,8 +29,8 @@ public class Runigram {
 
 	/** Returns a 2D array of Color values, representing the image data
 	 * stored in the given PPM file. */
-	public static Color[][] read(String cake) {
-		In in = new In(cake);
+	public static Color[][] read(String fileName) {
+		In in = new In(fileName);
 		// Reads the file header, ignoring the first and the third lines.
 		in.readString();
 		int numCols = in.readInt();
@@ -43,8 +43,8 @@ public class Runigram {
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
-		for (int row=0;row<numRows;row++){
-			for(int col=0;col<numCols;col++){
+		for (int row=0;row<image.length;row++){
+			for(int col=0;col<image[0].length;col++){
 				int r=in.readInt();
 				int b=in.readInt();
 				int g=in.readInt();
@@ -89,7 +89,7 @@ public class Runigram {
 		//// Replace the following statement with your code
 		
 	Color[][] flippedImageH = new Color[image.length][image[0].length];
-	for (int row=0;row<image[0].length;row++){
+	for (int row=0;row<image.length;row++){
 		int indexCol=0;
 	   for(int col=image[row].length-1;col>=0;col--){
 		   flippedImageH[row][indexCol]=image[row][col];
@@ -110,7 +110,7 @@ public class Runigram {
 		//// Replace the following statement with your code
 		Color[][] flippedImageV = new Color[image.length][image[0].length];
 		int indexRow=0;
-		for (int row=image[0].length-1;row>=0;row--){
+		for (int row=image.length-1;row>=0;row--){
 		   for(int col=0;col<image[row].length;col++){
 			   flippedImageV[indexRow][col]=image[row][col];
 			   
