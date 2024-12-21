@@ -52,7 +52,7 @@ public class Runigram {
 				image[row][col]=c;
 			}
 		}
-		return null;
+		return image;
 	}
 
     // Prints the RGB values of a given color.
@@ -86,7 +86,7 @@ public class Runigram {
 		//// Replace the following statement with your code
 		
 	Color[][] flippedImageH = new Color[image.length][image[0].length];
-	for (int row=0;row<image.length;row++){
+	for (int row=0;row<image[0].length;row++){
 		int indexCol=0;
 	   for(int col=image[row].length-1;col>=0;col--){
 		   flippedImageH[row][indexCol]=image[row][col];
@@ -110,7 +110,7 @@ public class Runigram {
 		}
 		Color[][] flippedImageV = new Color[image.length][image[0].length];
 		int indexRow=0;
-		for (int row=image.length-1;row>=0;row--){
+		for (int row=image[0].length-1;row>=0;row--){
 		   for(int col=0;col<image[row].length;col++){
 			   flippedImageV[indexRow][col]=image[row][col];
 			   
@@ -144,12 +144,10 @@ public class Runigram {
 	 */
 	public static Color[][] grayScaled(Color[][] image) {
 		//// Replace the following statement with your code
-		if(image.length==0){
-			return null;
-		}
+	
 		Color[][] grayColored = new Color[image.length][image[0].length];
 		 for (int row=0;row<image.length;row++){
-			for(int col=0;col<image[row].length;col++){
+			for(int col=0;col<image[0].length;col++){
 				Color turnGray=new Color(image[row][col].getRed(), image[row][col].getBlue(),image[row][col].getGreen());
 				 turnGray=luminance(turnGray);
 				 grayColored[row][col]=turnGray;
@@ -166,17 +164,15 @@ public class Runigram {
 	 */
 	public static Color[][] scaled(Color[][] image, int width, int height) {
 		//// Replace the following statement with your code
-		if(image.length==0){
-			return null;
-		}
+		
 		Color[][] scaledImage = new Color[height][width];
 		//int indexRow=0;
-		int rangeScaledRow=(int)(image.length/height);
-		int rangeScaledCol=(int)(image[0].length/width);
+		double rangeScaledRow=image.length/(double)height;
+		double rangeScaledCol=image[0].length/(double)width;
 		for (int row=0;row<height;row++){
 			//int indexCol=0;
 			for(int col=0;col<width;col++){
-				scaledImage[row][col]=image[row*rangeScaledRow][col*rangeScaledCol];
+				scaledImage[row][col]=image[(int)(row*rangeScaledRow)][(int)(col*rangeScaledCol)];
 
 			}
 		}
