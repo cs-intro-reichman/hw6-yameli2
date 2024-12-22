@@ -55,6 +55,7 @@ public class Runigram {
 		}
 		return image;
 	}
+
     // Prints the RGB values of a given color.
 	private static void print(Color c) {
 	    System.out.print("(");
@@ -148,9 +149,11 @@ public class Runigram {
 		Color[][] grayColored = new Color[image.length][image[0].length];
 		 for (int row=0;row<image.length;row++){
 			for(int col=0;col<image[0].length;col++){
-				Color turnGray=new Color(image[row][col].getRed(), image[row][col].getBlue(),image[row][col].getGreen());
-				 turnGray=luminance(turnGray);
-				 grayColored[row][col]=turnGray;
+				//Color turnGray=new Color(image[row][col].getRed(), image[row][col].getBlue(),image[row][col].getGreen());
+				 //turnGray=luminance(turnGray);
+				// grayColored[row][col]=turnGray;
+				grayColored[row][col]=luminance(image[row][col]);
+
 
 			}
 			}
