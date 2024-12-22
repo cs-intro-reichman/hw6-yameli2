@@ -43,18 +43,18 @@ public class Runigram {
 		// creates from the 3 colors a new Color object, and 
 		// makes pixel (i,j) refer to that object.
 		//// Replace the following statement with your code.
+	
 		for (int row=0;row<image.length;row++){
 			for(int col=0;col<image[0].length;col++){
 				int r=in.readInt();
-				int b=in.readInt();
 				int g=in.readInt();
+				int b=in.readInt();
 				Color c=new Color(r, g, b);
 				image[row][col]=c;
 			}
 		}
 		return image;
 	}
-
     // Prints the RGB values of a given color.
 	private static void print(Color c) {
 	    System.out.print("(");
